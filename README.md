@@ -1,24 +1,21 @@
-# Explainer for the TODO API
+# Explainer for Scroll Promisification
 
 **Instructions for the explainer author: Search for "todo" in this repository and update all the
 instances as appropriate. For the instances in `index.bs`, update the repository name, but you can
 leave the rest until you start the specification. Then delete the TODOs and this block of text.**
 
-This proposal is an early design sketch by [TODO: team] to describe the problem below and solicit
+This proposal is an early design sketch by Blink Interactions Team to describe the problem below and solicit
 feedback on the proposed solution. It has not been approved to ship in Chrome.
 
 TODO: Fill in the whole explainer template below using https://tag.w3.org/explainers/ as a
 reference. Look for [brackets].
 
 ## Proponents
-
-- [Proponent team 1]
-- [Proponent team 2]
-- [etc.]
+- Blink Interactions Team
 
 ## Participate
-- https://github.com/explainers-by-googlers/[your-repository-name]/issues
-- [Discussion forum]
+- https://github.com/explainers-by-googlers/promisify-scroll/issues
+- https://github.com/w3c/csswg-drafts/issues/1562
 
 ## Table of Contents [if the explainer is longer than one printed page]
 
@@ -67,8 +64,7 @@ enumerate them here. This section may be fleshed out as your design progresses a
 
 ## User research
 
-[If any user research has been conducted to inform your design choices,
-discuss the process and findings. User research should be more common than it is.]
+N/A
 
 ## Use cases
 
