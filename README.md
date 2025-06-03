@@ -34,11 +34,9 @@ reference. Look for [brackets].
   - [Use case 2](#use-case-2)
 <!--
 - [[Potential Solution]](#potential-solution)
--->
   - [How this solution would solve the use cases](#how-this-solution-would-solve-the-use-cases)
     - [Use case 1](#use-case-1-1)
     - [Use case 2](#use-case-2-1)
-<!--
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
   - [[Tricky design choice 2]](#tricky-design-choice-2)
