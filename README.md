@@ -121,6 +121,7 @@ If there is no suitable external documentation, you might like to provide supple
 
 [etc.]
 
+<!--
 ## Detailed design discussion
 
 ### [Tricky design choice #1]
@@ -137,7 +138,9 @@ in which case you should link to any active discussion threads.]
 ### [Tricky design choice 2]
 
 [etc.]
+-->
 
+<!--
 ## Considered alternatives
 
 [This should include as many alternatives as you can,
@@ -151,7 +154,9 @@ and why you decided against it.]
 ### [Alternative 2]
 
 [etc.]
+-->
 
+<!--
 ## Stakeholder Feedback / Opposition
 
 [Implementors and other stakeholders may already have publicly stated positions on this work. If you can, list them here with links to evidence as appropriate.]
@@ -161,7 +166,9 @@ and why you decided against it.]
 - [Implementor C] : Negative
 
 [If appropriate, explain the reasons given by other implementors for their concerns.]
+-->
 
+<!--
 ## References & acknowledgements
 
 [Your design will change and be informed by many people; acknowledge them in an ongoing way! It helps build community and, as we only get by through the contributions of many, is only fair.]
@@ -173,3 +180,4 @@ Many thanks for valuable feedback and advice from:
 - [Person 1]
 - [Person 2]
 - [etc.]
+-->
