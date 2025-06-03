@@ -3,10 +3,10 @@ Title: The TODO API
 Shortname: todo
 Level: None
 Status: w3c/UD
-Repository: explainers-by-googlers/todo-your-repo-name
-URL: https://explainers-by-googlers.github.io/todo-your-repo-name
-Editor: TODO: Your Name, Google https://google.com, TODO@google.com
-Abstract: TODO: A short description of your spec, one or two sentences.
+Repository: explainers-by-googlers/promisify-scroll
+URL: https://explainers-by-googlers.github.io/promisify-scroll
+Editor: Mustaq Ahmed, Google https://google.com, mustaq@google.com
+Abstract: Make the programmatic scroll methods return Promise objects that get resolved on scroll completion.
 Markup Shorthands: markdown yes, css no
 Complain About: accidental-2119 yes, missing-example-ids yes
 Assume Explicit For: yes
