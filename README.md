@@ -1,24 +1,21 @@
-# Explainer for the TODO API
+# Explainer for Scroll Promises
 
 **Instructions for the explainer author: Search for "todo" in this repository and update all the
 instances as appropriate. For the instances in `index.bs`, update the repository name, but you can
 leave the rest until you start the specification. Then delete the TODOs and this block of text.**
 
-This proposal is an early design sketch by [TODO: team] to describe the problem below and solicit
+This proposal is an early design sketch by Blink Interactions Team to describe the problem below and solicit
 feedback on the proposed solution. It has not been approved to ship in Chrome.
 
 TODO: Fill in the whole explainer template below using https://tag.w3.org/explainers/ as a
 reference. Look for [brackets].
 
 ## Proponents
-
-- [Proponent team 1]
-- [Proponent team 2]
-- [etc.]
+- Blink Interactions Team
 
 ## Participate
-- https://github.com/explainers-by-googlers/[your-repository-name]/issues
-- [Discussion forum]
+- https://github.com/explainers-by-googlers/promisify-scroll/issues
+- https://github.com/w3c/csswg-drafts/issues/1562
 
 ## Table of Contents [if the explainer is longer than one printed page]
 
@@ -50,15 +47,18 @@ reference. Look for [brackets].
 
 ## Introduction
 
-[The "executive summary" or "abstract".
-Explain in a few sentences what the goals of the project are,
-and a brief overview of how the solution works.
-This should be no more than 1-2 paragraphs.]
+Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG (https://github.com/w3c/csswg-drafts/issues/1562): make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution for spec updates and implementation.
 
 ## Goals
 
-[What is the **end-user need** which this project aims to address? Make this section short, and
-elaborate in the Use cases section.]
+We have six scroll methods available through both [`Element`]([url](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface)) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined` because these method signatures were developed when scroll was assumed to be instant.  Currently there is widespread support for smooth-scroll, which can be specified using a `[ScrollOptions](https://drafts.csswg.org/cssom-view/#dictdef-scrolloptions).[ScrollBehavior](https://drafts.csswg.org/cssom-view/#enumdef-scrollbehavior)` parameter in thos methods.  This project aims to make those methods return `Promise` objects (instead of `undefined`) that get resolved at the completion of the scoll, providing an easy way to do things at scroll completion:
+```JS
+  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
+     // Do something at the end of the scroll.
+  });
+```
+
+TODO: user-focused examples.
 
 ## Non-goals
 
@@ -67,8 +67,7 @@ enumerate them here. This section may be fleshed out as your design progresses a
 
 ## User research
 
-[If any user research has been conducted to inform your design choices,
-discuss the process and findings. User research should be more common than it is.]
+N/A
 
 ## Use cases
 
