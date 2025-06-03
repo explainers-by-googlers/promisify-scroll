@@ -51,19 +51,16 @@ Web developers currently have no way to know when a programmatic [smooth-scroll]
 
 ## Goals
 
-We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined` because these method signatures were developed when scroll was assumed to be instant.  Currently there is widespread support for smooth-scroll, which can be specified using a `[ScrollOptions](https://drafts.csswg.org/cssom-view/#dictdef-scrolloptions).[ScrollBehavior](https://drafts.csswg.org/cssom-view/#enumdef-scrollbehavior)` parameter in those methods.  This project aims to make those methods return `Promise` objects (instead of `undefined`) that get resolved at the completion of the scoll, providing an easy way to do things at scroll completion:
+We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined` because these method signatures were developed when scroll was assumed to be instant.  Currently there is widespread support for smooth-scroll, which can be specified using a [`ScrollBehavior`](https://drafts.csswg.org/cssom-view/#enumdef-scrollbehavior) entry in [`ScrollOptions`](https://drafts.csswg.org/cssom-view/#dictdef-scrolloptions) parameter passed to those methods.  This explainer elaborates how to make those methods return `Promise` objects (instead of `undefined`) that get resolved at the completion of the scoll, providing an easy way to do things at scroll completion as follows:
 ```JS
   element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
      // Do something at the end of the scroll.
   });
 ```
 
-TODO: user-focused examples.
-
 ## Non-goals
 
-[If there are "adjacent" goals which may appear to be in scope but aren't,
-enumerate them here. This section may be fleshed out as your design progresses and you encounter necessary technical and other trade-offs.]
+This explainer does not cover smooth-scroll behavior or chaining of nested scrollers.
 
 ## User research
 
@@ -71,7 +68,7 @@ N/A
 
 ## Use cases
 
-[Describe in detail what problems end-users are facing, which this project is trying to solve. A
+[TODO: Describe in detail what problems end-users are facing, which this project is trying to solve. A
 common mistake in this section is to take a web developer's or server operator's perspective, which
 makes reviewers worry that the proposal will violate [RFC 8890, The Internet is for End
 Users](https://www.rfc-editor.org/rfc/rfc8890).]
