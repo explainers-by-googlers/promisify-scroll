@@ -1,6 +1,6 @@
 <pre class='metadata'>
-Title: The TODO API
-Shortname: todo
+Title: Scroll Promises
+Shortname: Scroll Promises
 Level: None
 Status: w3c/UD
 Repository: explainers-by-googlers/promisify-scroll
