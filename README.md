@@ -47,17 +47,18 @@ reference. Look for [brackets].
 
 ## Introduction
 
-When a [smooth scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) is performed through any of the [scrolling methods](https://drafts.csswg.org/cssom-view/#idl-index) available in `Element` and `Window`, developers have no way to know when the scrolling has completed.  This project aims to make those scrolling methods return Promises that get resolved at the completion of the smooth scoll, providing an easy way to do things at scroll completion.
-```JS
-  element.scroll(0, 400).then(() => {
-     // ...scroll has finished
-  });
-```
+Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG (https://github.com/w3c/csswg-drafts/issues/1562): make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution for spec updates and implementation.
 
 ## Goals
 
-[What is the **end-user need** which this project aims to address? Make this section short, and
-elaborate in the Use cases section.]
+We have six scroll methods available through both [`Element`]([url](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface)) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined` because these method signatures were developed when scroll was assumed to be instant.  Currently there is widespread support for smooth-scroll, which can be specified using a `[ScrollOptions](https://drafts.csswg.org/cssom-view/#dictdef-scrolloptions).[ScrollBehavior](https://drafts.csswg.org/cssom-view/#enumdef-scrollbehavior)` parameter in thos methods.  This project aims to make those methods return `Promise` objects (instead of `undefined`) that get resolved at the completion of the scoll, providing an easy way to do things at scroll completion:
+```JS
+  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
+     // Do something at the end of the scroll.
+  });
+```
+
+TODO: user-focused examples.
 
 ## Non-goals
 
