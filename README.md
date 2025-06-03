@@ -1,4 +1,4 @@
-# Explainer for Scroll Promisification
+# Explainer for Scroll Promises
 
 **Instructions for the explainer author: Search for "todo" in this repository and update all the
 instances as appropriate. For the instances in `index.bs`, update the repository name, but you can
@@ -47,10 +47,12 @@ reference. Look for [brackets].
 
 ## Introduction
 
-[The "executive summary" or "abstract".
-Explain in a few sentences what the goals of the project are,
-and a brief overview of how the solution works.
-This should be no more than 1-2 paragraphs.]
+When a [smooth scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) is performed through any of the [scrolling methods](https://drafts.csswg.org/cssom-view/#idl-index) available in `Element` and `Window`, developers have no way to know when the scrolling has completed.  This project aims to make those scrolling methods return Promises that get resolved at the completion of the smooth scoll, providing an easy way to do things at scroll completion.
+```JS
+  element.scroll(0, 400).then(() => {
+     // ...scroll has finished
+  });
+```
 
 ## Goals
 
