@@ -32,7 +32,9 @@ reference. Look for [brackets].
 - [Use cases](#use-cases)
   - [Use case 1](#use-case-1)
   - [Use case 2](#use-case-2)
+<!--
 - [[Potential Solution]](#potential-solution)
+-->
   - [How this solution would solve the use cases](#how-this-solution-would-solve-the-use-cases)
     - [Use case 1](#use-case-1-1)
     - [Use case 2](#use-case-2-1)
@@ -88,6 +90,7 @@ Users](https://www.rfc-editor.org/rfc/rfc8890).]
 <!-- In your initial explainer, you shouldn't be attached or appear attached to any of the potential
 solutions you describe below this. -->
 
+<!--
 ## [Potential Solution]
 
 [For each related element of the proposed solution - be it an additional JS method, a new object, a new element, a new concept etc., create a section which briefly describes it.]
@@ -126,6 +129,7 @@ If there is no suitable external documentation, you might like to provide supple
 #### Use case 2
 
 [etc.]
+-->
 
 <!--
 ## Detailed design discussion
