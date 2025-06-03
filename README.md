@@ -26,7 +26,9 @@ reference. Look for [brackets].
 - [Introduction](#introduction)
 - [Goals](#goals)
 - [Non-goals](#non-goals)
+<!--
 - [User research](#user-research)
+-->
 - [Use cases](#use-cases)
   - [Use case 1](#use-case-1)
   - [Use case 2](#use-case-2)
@@ -34,6 +36,7 @@ reference. Look for [brackets].
   - [How this solution would solve the use cases](#how-this-solution-would-solve-the-use-cases)
     - [Use case 1](#use-case-1-1)
     - [Use case 2](#use-case-2-1)
+<!--
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
   - [[Tricky design choice 2]](#tricky-design-choice-2)
@@ -42,6 +45,7 @@ reference. Look for [brackets].
   - [[Alternative 2]](#alternative-2)
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
+-->
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -62,9 +66,11 @@ We have six scroll methods available through both [`Element`](https://drafts.css
 
 This explainer does not cover smooth-scroll behavior or chaining of nested scrollers.
 
+<!--
 ## User research
 
 N/A
+-->
 
 ## Use cases
 
