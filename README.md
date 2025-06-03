@@ -68,6 +68,8 @@ N/A
 
 ## Use cases
 
+TODO: user-focused examples.
+
 [TODO: Describe in detail what problems end-users are facing, which this project is trying to solve. A
 common mistake in this section is to take a web developer's or server operator's perspective, which
 makes reviewers worry that the proposal will violate [RFC 8890, The Internet is for End
