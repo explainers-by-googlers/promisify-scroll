@@ -1,14 +1,7 @@
 # Explainer for Scroll Promises
 
-**Instructions for the explainer author: Search for "todo" in this repository and update all the
-instances as appropriate. For the instances in `index.bs`, update the repository name, but you can
-leave the rest until you start the specification. Then delete the TODOs and this block of text.**
-
 This proposal is an early design sketch by Blink Interactions Team to describe the problem below and solicit
 feedback on the proposed solution. It has not been approved to ship in Chrome.
-
-TODO: Fill in the whole explainer template below using https://tag.w3.org/explainers/ as a
-reference. Look for [brackets].
 
 ## Proponents
 - Blink Interactions Team
@@ -30,8 +23,6 @@ reference. Look for [brackets].
 - [User research](#user-research)
 -->
 - [Use cases](#use-cases)
-  - [Use case 1](#use-case-1)
-  - [Use case 2](#use-case-2)
 <!--
 - [[Potential Solution]](#potential-solution)
   - [How this solution would solve the use cases](#how-this-solution-would-solve-the-use-cases)
@@ -80,10 +71,6 @@ TODO: user-focused examples.
 common mistake in this section is to take a web developer's or server operator's perspective, which
 makes reviewers worry that the proposal will violate [RFC 8890, The Internet is for End
 Users](https://www.rfc-editor.org/rfc/rfc8890).]
-
-### Use case 1
-
-### Use case 2
 
 <!-- In your initial explainer, you shouldn't be attached or appear attached to any of the potential
 solutions you describe below this. -->
