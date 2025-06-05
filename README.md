@@ -63,7 +63,7 @@ partial interface Element {
   Promise<undefined> scrollBy(unrestricted double x, unrestricted double y);
 }
 ```
-We would need a very similar changge in the IDL for [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) too.
+We would need a very similar change in the IDL for [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) too.
 
 This change would allow developers do things very easily at the completion of a scroll, like this:
 ```JS
