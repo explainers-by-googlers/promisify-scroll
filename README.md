@@ -39,13 +39,13 @@ feedback on the proposed solution. It has not been approved to ship in Chrome.
 
 ## Introduction
 
-Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG (https://github.com/w3c/csswg-drafts/issues/1562): make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution for spec updates and implementation.
+Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG: make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution, for spec updates and implementation.
 
 ## Goals
 
 We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined`, which was fine during the early days of the web when scroll was assumed to be instant.  This behavior no longer seems adequate from a web developer's perspective today: there is widespread support for `smooth-scroll` (see [browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#browser_compatibility) for the CSS property), and it is not easy for the developers to determine when a particular call for a smooth-scroll has completed.
 
-This explainer elaborates how to make those methods return `Promise` objects (instead of `undefined`) to solve this problem, as per the CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562.
+This explainer elaborates how to make those methods return `Promise` objects to solve this problem, as per the CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562.
 
 ## Non-goals
 
@@ -54,35 +54,34 @@ This explainer elaborates how to make those methods return `Promise` objects (in
 
 ## Use cases
 
-TODO: user-focused examples.
+### Disabled UI during smooth-scroll
 
-[Describe in detail what problems end-users are facing, which this project is trying to solve. A
-common mistake in this section is to take a web developer's or server operator's perspective, which
-makes reviewers worry that the proposal will violate [RFC 8890, The Internet is for End
-Users](https://www.rfc-editor.org/rfc/rfc8890).]
+Imagine a custom scroller that relies on programmatic scroll and that its buttons get disabled while a smooth-scroll is ongoing.
 
-<!-- In your initial explainer, you shouldn't be attached or appear attached to any of the potential
-solutions you describe below this. -->
+## Solution
 
-<!--
-## [Solution]
+The CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562 proposes that the scroll methods available in [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces return `Promise` objects (instead of `undefined`).  This would modify the spec IDLs as follows:
+```IDL
+partial interface Window {
+  Promise<undefined> scrollIntoView(optional (boolean or ScrollIntoViewOptions) arg = {});
+  Promise<undefined> scroll(optional ScrollToOptions options = {});
+  Promise<undefined> scroll(unrestricted double x, unrestricted double y);
+  Promise<undefined> scrollTo(optional ScrollToOptions options = {});
+  Promise<undefined> scrollTo(unrestricted double x, unrestricted double y);
+  Promise<undefined> scrollBy(optional ScrollToOptions options = {});
+  Promise<undefined> scrollBy(unrestricted double x, unrestricted double y);
+}
 
-[For each related element of the proposed solution - be it an additional JS method, a new object, a new element, a new concept etc., create a section which briefly describes it.]
-
-```JS
-  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
-     // Do something at the end of the scroll.
-  });
+partial interface Element {
+  Promise<undefined> scrollIntoView(optional (boolean or ScrollIntoViewOptions) arg = {});
+  Promise<undefined> scroll(optional ScrollToOptions options = {});
+  Promise<undefined> scroll(unrestricted double x, unrestricted double y);
+  Promise<undefined> scrollTo(optional ScrollToOptions options = {});
+  Promise<undefined> scrollTo(unrestricted double x, unrestricted double y);
+  Promise<undefined> scrollBy(optional ScrollToOptions options = {});
+  Promise<undefined> scrollBy(unrestricted double x, unrestricted double y);
+}
 ```
-
-[Where necessary, provide links to longer explanations of the relevant pre-existing concepts and API.
-If there is no suitable external documentation, you might like to provide supplementary information as an appendix in this document, and provide an internal link where appropriate.]
-
-[If this is already specced, link to the relevant section of the spec.]
-
-[If spec work is in progress, link to the PR or draft of the spec.]
-
-[If you have more potential solutions in mind, add ## Potential Solution 2, 3, etc. sections.]
 
 ### How this solution would solve the use cases
 
@@ -90,16 +89,13 @@ If there is no suitable external documentation, you might like to provide supple
 
 #### Use case 1
 
-[Description of the end-user scenario]
-
-```js
-// Sample code demonstrating how to use these APIs to address that scenario.
+```JS
+  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
+     // Do something at the end of the scroll.
+  });
 ```
 
-#### Use case 2
 
-[etc.]
--->
 
 <!--
 ## Detailed design discussion
