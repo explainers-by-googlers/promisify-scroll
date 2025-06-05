@@ -46,16 +46,14 @@ Web developers currently have no way to know when a programmatic [smooth-scroll]
 
 ## Goals
 
-We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined` because these method signatures were developed when scroll was assumed to be instant.  Currently there is widespread support for smooth-scroll, which can be specified using a [`ScrollBehavior`](https://drafts.csswg.org/cssom-view/#enumdef-scrollbehavior) entry in [`ScrollOptions`](https://drafts.csswg.org/cssom-view/#dictdef-scrolloptions) parameter passed to those methods.  This explainer elaborates how to make those methods return `Promise` objects (instead of `undefined`) that get resolved at the completion of the scoll, providing an easy way to do things at scroll completion as follows:
-```JS
-  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
-     // Do something at the end of the scroll.
-  });
-```
+We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined`, which was fine during the early days of the web when scroll was assumed to be instant.  This behavior no longer seems adequate from a web developer's perspective today: there is widespread support for `smooth-scroll` (see [browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#browser_compatibility) for the CSS property), and it is not easy for the developers to determine when a particular call for a smooth-scroll has completed.
+
+This explainer elaborates how to make those methods return `Promise` objects (instead of `undefined`) to solve this problem, as per the CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562.
 
 ## Non-goals
 
-This explainer does not cover smooth-scroll behavior or chaining of nested scrollers.
+- Details of smooth-scroll behavior or chaining of nested scrollers.
+- Alternatives to returning `Promise` objects.
 
 <!--
 ## User research
@@ -76,18 +74,14 @@ Users](https://www.rfc-editor.org/rfc/rfc8890).]
 solutions you describe below this. -->
 
 <!--
-## [Potential Solution]
+## [Solution]
 
 [For each related element of the proposed solution - be it an additional JS method, a new object, a new element, a new concept etc., create a section which briefly describes it.]
 
-```js
-// Provide example code - not IDL - demonstrating the design of the feature.
-
-// If this API can be used on its own to address a user need,
-// link it back to one of the scenarios in the goals section.
-
-// If you need to show how to get the feature set up
-// (initialized, or using permissions, etc.), include that too.
+```JS
+  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
+     // Do something at the end of the scroll.
+  });
 ```
 
 [Where necessary, provide links to longer explanations of the relevant pre-existing concepts and API.
