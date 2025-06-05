@@ -83,7 +83,7 @@ For the use-case above, disabling a button during programmatic smooth-scroll wou
 ```JS
   button.onclick = () => {
     button.classList.add("dimmed");
-    container.scrollTo(0, 0);
+    await container.scrollTo(0, 0);
     button.classList.remove("dimmed");
   }
 ```
