@@ -10,21 +10,14 @@ feedback on the proposed solution. It has not been approved to ship in Chrome.
 - https://github.com/explainers-by-googlers/promisify-scroll/issues
 - https://github.com/w3c/csswg-drafts/issues/1562
 
-## Table of Contents [if the explainer is longer than one printed page]
-
-<!-- Update this table of contents by running `npx doctoc README.md` -->
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Goals](#goals)
 - [Non-goals](#non-goals)
 - [Use cases](#use-cases)
+- [Solution](#solution)
 <!--
-- [[Potential Solution]](#potential-solution)
-  - [How this solution would solve the use cases](#how-this-solution-would-solve-the-use-cases)
-    - [Use case 1](#use-case-1-1)
-    - [Use case 2](#use-case-2-1)
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
   - [[Tricky design choice 2]](#tricky-design-choice-2)
@@ -34,8 +27,6 @@ feedback on the proposed solution. It has not been approved to ship in Chrome.
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
 -->
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
 
@@ -49,29 +40,19 @@ This explainer elaborates how to make those methods return `Promise` objects to 
 
 ## Non-goals
 
-- Details of smooth-scroll behavior or chaining of nested scrollers.
 - Alternatives to returning `Promise` objects.
+- Details of smooth-scroll behavior or chaining of nested scrollers.
 
 ## Use cases
 
-### Disabled UI during smooth-scroll
+### Disabling UI during programmatic smooth-scroll
 
 Imagine a custom scroller that relies on programmatic scroll and that its buttons get disabled while a smooth-scroll is ongoing.
 
 ## Solution
 
-The CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562 proposes that the scroll methods available in [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces return `Promise` objects (instead of `undefined`).  This would modify the spec IDLs as follows:
+The CSS WG discussion at https://github.com/w3c/csswg-drafts/issues/1562 resolved that the scroll methods in `Element` and `Window` would return `Promise` objects (instead of `undefined`).  For that we would modifiy the IDL for [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) as follows:
 ```IDL
-partial interface Window {
-  Promise<undefined> scrollIntoView(optional (boolean or ScrollIntoViewOptions) arg = {});
-  Promise<undefined> scroll(optional ScrollToOptions options = {});
-  Promise<undefined> scroll(unrestricted double x, unrestricted double y);
-  Promise<undefined> scrollTo(optional ScrollToOptions options = {});
-  Promise<undefined> scrollTo(unrestricted double x, unrestricted double y);
-  Promise<undefined> scrollBy(optional ScrollToOptions options = {});
-  Promise<undefined> scrollBy(unrestricted double x, unrestricted double y);
-}
-
 partial interface Element {
   Promise<undefined> scrollIntoView(optional (boolean or ScrollIntoViewOptions) arg = {});
   Promise<undefined> scroll(optional ScrollToOptions options = {});
@@ -82,20 +63,30 @@ partial interface Element {
   Promise<undefined> scrollBy(unrestricted double x, unrestricted double y);
 }
 ```
+We would need a very similar changge in the IDL for [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) too.
 
-### How this solution would solve the use cases
-
-[If there are a suite of interacting APIs, show how they work together to solve the use cases described.]
-
-#### Use case 1
-
+This change would allow developers do things very easily at the completion of a scroll, like this:
 ```JS
-  element.scrollBy({top: 500, behavior: "smooth"}).then(() => {
+  element.scrollTo(0, 100).then(() => {
      // Do something at the end of the scroll.
   });
 ```
+or this:
+```JS
+  await element.scrollTo(0, 100);
+  // Do something at the end of the scroll.
+```
 
+### How this solution would solve the use cases
 
+For the use-case above, disabling a button during programmatic smooth-scroll would be as simple as:
+```JS
+  button.onclick = () => {
+    button.classList.add("dimmed");
+    container.scrollTo(0, 0);
+    button.classList.remove("dimmed");
+  }
+```
 
 <!--
 ## Detailed design discussion
