@@ -19,9 +19,6 @@ feedback on the proposed solution. It has not been approved to ship in Chrome.
 - [Introduction](#introduction)
 - [Goals](#goals)
 - [Non-goals](#non-goals)
-<!--
-- [User research](#user-research)
--->
 - [Use cases](#use-cases)
 <!--
 - [[Potential Solution]](#potential-solution)
@@ -54,12 +51,6 @@ This explainer elaborates how to make those methods return `Promise` objects (in
 
 - Details of smooth-scroll behavior or chaining of nested scrollers.
 - Alternatives to returning `Promise` objects.
-
-<!--
-## User research
-
-N/A
--->
 
 ## Use cases
 
