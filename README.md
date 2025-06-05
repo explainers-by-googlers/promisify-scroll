@@ -81,12 +81,14 @@ or this:
 
 For the use-case above, disabling a button during programmatic smooth-scroll would be as simple as:
 ```JS
-  button.onclick = () => {
+  button.onclick = async () => {
     button.classList.add("dimmed");
     await container.scrollTo(0, 0);
     button.classList.remove("dimmed");
   }
 ```
+
+Here is a [demo](https://codepen.io/mustaqahmed/full/gbpmNOP) (the button dims only when the feature is enabled).
 
 <!--
 ## Detailed design discussion
