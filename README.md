@@ -1,4 +1,4 @@
-# Explainer: Promise-based Programmatic Scroll
+# Explainer: Promise for Programmatic Scroll
 
 This proposal is an early design sketch by Blink Interactions Team to describe the problem below and solicit
 feedback on the proposed solution. It has not been approved to ship in Chrome.
