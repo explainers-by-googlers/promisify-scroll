@@ -92,7 +92,7 @@ Here is a [demo](https://codepen.io/mustaqahmed/full/gbpmNOP) (the button dims o
 
 ### Promise rejection
 
-To maintain the backward compatibilty for the scroll methods, we would avoid rejecting the retunred Promises (as much as possible).  This is because unhandled Promise rejections are treated as exceptions, which could fail any JS callers that assume that those methods to succeed unconditionally.
+To maintain the backward compatibilty for the scroll methods, we would avoid rejecting the returned Promises (as much as possible).  This is because unhandled Promise rejections are treated as exceptions, which could fail any JS callers that assume that those methods to succeed unconditionally.
 
 To be precise about the Promise rejection behavior, if a scroll is not needed because the scroll position is already correct, the returned Promise would be resolved immediately. If an ongoing programmatic scroll is interrupted by either a user gesture or by another invocation of a programmatic scroll, at the moment of the interruption the (first) scroll would be considered complete and the Promise would be resolved.
 
