@@ -48,6 +48,8 @@ Imagine a custom scroller that relies on programmatic scroll and that its button
 
 Another similar use-case is highlighting the element that has been scrolled to: Maybe a form field failed validation, so it's scrolled to and an outline is blinked once the scrolling is complete.
 
+Currently there is no way to reliably handle this.
+
 ## Solution
 
 The CSS WG discussion at https://github.com/w3c/csswg-drafts/issues/1562 resolved that the scroll methods in `Element` and `Window` would return `Promise` objects (instead of `undefined`).  For that we would modifiy the IDL for [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) as follows:
