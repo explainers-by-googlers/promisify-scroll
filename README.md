@@ -48,7 +48,7 @@ Imagine a custom scroller that relies on programmatic scroll and that its button
 
 Another similar use-case is highlighting the element that has been scrolled to: Maybe a form field failed validation, so it's scrolled to and an outline is blinked once the scrolling is complete.
 
-Currently there is no way to reliably handle this.
+Currently there is no way to reliably handle this. Developers can't rely on `scrollend` event for this, see [Considered alternatives](#considered-alternatives) below.
 
 ## Solution
 
