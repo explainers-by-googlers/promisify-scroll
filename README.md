@@ -17,9 +17,10 @@ This explainer by Blink Interactions Team covers certain details of Programmatic
 <!--
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
-  - [[Tricky design choice 2]](#tricky-design-choice-2) -->
+  - [[Tricky design choice 2]](#tricky-design-choice-2)
+-->
 - [Considered alternatives](#considered-alternatives)
-  - [[Alternative 1]](#alternative-1)
+  - [[Alternative 1]](#the-scrollend-event)
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
 
@@ -37,7 +38,7 @@ This explainer elaborates how to make those methods return `Promise` objects to 
 
 - Alternatives to returning `Promise` objects.
 - Details of smooth-scroll animations.
-- Chaining of nested scrollers for `Element.scrollIntoView`.
+- Chaining of nested scrollers for `element.scrollIntoView`.
 
 ## Use cases
 
@@ -113,10 +114,11 @@ in which case you should link to any active discussion threads.]
 
 ## Considered alternatives
 
-### [Alternative 1]
+### The `scrollend` event
 
-[Describe an alternative which was considered,
-and why you decided against it.]
+We can't use the `scrollend` event for the use-cases mentioned here for two reasons:
+- The event fires only at the end of a "visible" scrolling. In other words, the event is not fired for a scroll request that didn't start scrolling at all (e.g. `element.scrollBy(0, 0)`).
+- When `element.scrollIntoView()` affects multiple scrollers, the event is fired for each of the scrollers separately.
 
 ## Stakeholder Feedback / Opposition
 
