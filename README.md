@@ -42,9 +42,11 @@ This explainer elaborates how to make those methods return `Promise` objects to 
 
 ## Use cases
 
-### Disabling UI during programmatic smooth-scroll
+### Disabling UI during smooth-scroll animation
 
 Imagine a custom scroller that relies on programmatic scroll and that its buttons get disabled while a smooth-scroll is ongoing.
+
+Another similar use-case is highlighting the element that has been scrolled to: Maybe a form field failed validation, so it's scrolled to and an outline is blinked once the scrolling is complete.
 
 ## Solution
 
