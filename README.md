@@ -17,11 +17,9 @@ This explainer by Blink Interactions Team covers certain details of Programmatic
 <!--
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
-  - [[Tricky design choice 2]](#tricky-design-choice-2)
--->
+  - [[Tricky design choice 2]](#tricky-design-choice-2) -->
 - [Considered alternatives](#considered-alternatives)
   - [[Alternative 1]](#alternative-1)
-  - [[Alternative 2]](#alternative-2)
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
 
@@ -113,25 +111,18 @@ in which case you should link to any active discussion threads.]
 [etc.]
 -->
 
-<!--
 ## Considered alternatives
-
-[This should include as many alternatives as you can,
-from high level architectural decisions down to alternative naming choices.]
 
 ### [Alternative 1]
 
 [Describe an alternative which was considered,
 and why you decided against it.]
 
-### [Alternative 2]
-
-[etc.]
--->
-
-<!--
 ## Stakeholder Feedback / Opposition
 
+TBD, will be added when vendor positions are known.
+
+<!--
 [Implementors and other stakeholders may already have publicly stated positions on this work. If you can, list them here with links to evidence as appropriate.]
 
 - [Implementor A] : Positive
@@ -141,16 +132,10 @@ and why you decided against it.]
 [If appropriate, explain the reasons given by other implementors for their concerns.]
 -->
 
-<!--
 ## References & acknowledgements
-
-[Your design will change and be informed by many people; acknowledge them in an ongoing way! It helps build community and, as we only get by through the contributions of many, is only fair.]
-
-[Unless you have a specific reason not to, these should be in alphabetical order.]
 
 Many thanks for valuable feedback and advice from:
 
-- [Person 1]
-- [Person 2]
-- [etc.]
--->
+- @dbaron
+- @flackr
+- @tabatkins
