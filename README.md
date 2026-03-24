@@ -20,7 +20,7 @@ This explainer by Blink Interactions Team covers certain details of Programmatic
   - [[Tricky design choice 2]](#tricky-design-choice-2)
 -->
 - [Considered alternatives](#considered-alternatives)
-  - [[Alternative 1]](#the-scrollend-event)
+  - [The `scrollend` event](#the-scrollend-event)
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
 
