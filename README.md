@@ -117,8 +117,8 @@ in which case you should link to any active discussion threads.]
 ### The `scrollend` event
 
 We can't use the `scrollend` event for the use-cases mentioned here for two reasons:
-- The event fires only at the end of a "visible" scrolling. In other words, the event is not fired for a scroll request that didn't start scrolling at all (e.g. `element.scrollBy(0, 0)`).
-- When `element.scrollIntoView()` affects multiple scrollers, the event is fired for each of the scrollers separately.
+- The event fires only at the end of a "visible" scrolling. In other words, the event is not fired for a scroll request that didn't start scrolling at all (e.g. `element.scrollBy(0, 0)`). So this event is not a reliable signal for the end of a scroll request.
+- When `element.scrollIntoView()` affects multiple scrollers, the event is fired for each of the scrollers separately, making it hard for developers to know when all those scrollers are done scrolling.
 
 ## Stakeholder Feedback / Opposition
 
