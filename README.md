@@ -1,17 +1,14 @@
 # Explainer: Programmatic Scroll Promise
 
-This proposal is an early design sketch by Blink Interactions Team to describe the problem below and solicit
-feedback on the proposed solution. It has not been approved to ship in Chrome.
+This explainer by Blink Interactions Team covers certain details of Programmatic Scroll Promises that seem necessary from an implementor's perspective. The API has already been resolved through https://github.com/w3c/csswg-drafts/issues/1562 and https://github.com/w3c/csswg-drafts/issues/12495.
 
 ## Proponents
 - Blink Interactions Team
 
 ## Participate
 - https://github.com/explainers-by-googlers/promisify-scroll/issues
-- https://github.com/w3c/csswg-drafts/issues/1562
 
 ## Table of Contents
-
 - [Introduction](#introduction)
 - [Goals](#goals)
 - [Non-goals](#non-goals)
@@ -21,27 +18,28 @@ feedback on the proposed solution. It has not been approved to ship in Chrome.
 - [Detailed design discussion](#detailed-design-discussion)
   - [[Tricky design choice #1]](#tricky-design-choice-1)
   - [[Tricky design choice 2]](#tricky-design-choice-2)
+-->
 - [Considered alternatives](#considered-alternatives)
   - [[Alternative 1]](#alternative-1)
   - [[Alternative 2]](#alternative-2)
 - [Stakeholder Feedback / Opposition](#stakeholder-feedback--opposition)
 - [References & acknowledgements](#references--acknowledgements)
--->
 
 ## Introduction
 
-Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG: make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution, for spec updates and implementation.
+Web developers currently have no way to know when a programmatic [smooth-scroll](https://drafts.csswg.org/cssom-view/#concept-smooth-scroll) has completed.  A solution to the problem that has already been resolved in the CSS WG: make the programmatic scroll methods return `Promise` objects that get resolved on scroll completion.  This explainer provides details of the solution, for implementation.
 
 ## Goals
 
-We have six scroll methods available through both [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  These methods return immediately with the value `undefined`, which was fine during the early days of the web when scroll was assumed to be instant.  This behavior no longer seems adequate from a web developer's perspective today: there is widespread support for `smooth-scroll` (see [browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#browser_compatibility) for the CSS property), and it is not easy for the developers to determine when a particular call for a smooth-scroll has completed.
+We have seven scroll methods in [`Element`](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) and six in [`Window`](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) interfaces.  In today's browsers, these methods return immediately with the value `undefined`, which was fine during the early days of the web when scroll was assumed to be instant.  This behavior no longer seems adequate from a web developer's perspective today: there is widespread support for `smooth-scroll` (see [browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#browser_compatibility) for the CSS property), and it is not easy for the developers to determine when a particular call for a smooth-scroll has completed.
 
 This explainer elaborates how to make those methods return `Promise` objects to solve this problem, as per the CSS WG resolution in https://github.com/w3c/csswg-drafts/issues/1562.
 
 ## Non-goals
 
 - Alternatives to returning `Promise` objects.
-- Details of smooth-scroll behavior or chaining of nested scrollers.
+- Details of smooth-scroll animations.
+- Chaining of nested scrollers for `Element.scrollIntoView`.
 
 ## Use cases
 
